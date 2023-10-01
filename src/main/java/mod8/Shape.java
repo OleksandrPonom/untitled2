@@ -1,5 +1,9 @@
 package mod8;
 
 public interface Shape {
-    void printShape();
+
+    void printShape(Shape shape);
+
+    void drawFigure();
+
 }
