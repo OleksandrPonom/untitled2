@@ -1,5 +1,7 @@
 package mod_9.ArrayList;
 
+import java.util.Arrays;
+
 public class _MyArrayList {
     public static void main(String[] args) {
         MyArrayList<Integer> myArrayList = new MyArrayList<>();
@@ -13,13 +15,18 @@ public class _MyArrayList {
         myArrayList.add(20);
         myArrayList.add(33);
         myArrayList.add(31);
-      //  myArrayList.add(20);
-      //  myArrayList.add(44);
+        myArrayList.add(20);
+        myArrayList.add(44);
+
         Integer element = myArrayList.get(2);
         System.out.println("element = " + element);
-        System.out.println(myArrayList.size());
+        System.out.println("size = " + myArrayList.size());
+
+        myArrayList.remove(2);
+
         myArrayList.clear();
-        Integer cl = myArrayList.get(3);
+        Integer cl = myArrayList.get(1);
         System.out.println("cl = " + cl);
+
     }
 }

@@ -1,5 +1,8 @@
 package mod_9.ArrayList;
 
+import java.util.Arrays;
+import java.util.StringJoiner;
+
 public class MyArrayList <T> {
     private static final int DEFAULT_CAPACITY = 10;
     private T[] data;
@@ -9,37 +12,20 @@ public class MyArrayList <T> {
         size = 0;
     }
 
-    /*public boolean addAll(int index, Collection<? extends E> c) {
-        rangeCheckForAdd(index);
-
-        Object[] a = c.toArray();
-        modCount++;
-        int numNew = a.length;
-        if (numNew == 0)
-            return false;
-        Object[] elementData;
-        final int s;
-        if (numNew > (elementData = this.elementData).length - (s = size))
-            elementData = grow(s + numNew);
-
-        int numMoved = s - index;
-        if (numMoved > 0)
-            System.arraycopy(elementData, index,
-                    elementData, index + numNew,
-                    numMoved);
-        System.arraycopy(a, 0, elementData, index, numNew);
-        size = s + numNew;
-        return true;
-    }*/
-
-
     public void add(T value){
-        if (size >= data.length){
-            Object[] newArray = data;
-            int newSize = newArray.length;
-        }
+        resizeFromArrayLength();
         data[size] = value;
         size++;
+    }
+
+    private void resizeFromArrayLength() {
+        if (size >= data.length) {
+            System.out.println("The array has been resized " + size + ", data.length: " + data.length);
+            int newSize = data.length * 2;
+            Object[] newArray = new Object[newSize];
+            System.arraycopy(data, 0, newArray, 0, data.length);
+            data = (T[]) newArray;
+        }
     }
 
     public T get(int index){
@@ -48,14 +34,22 @@ public class MyArrayList <T> {
         }
         return data[index];
     }
- /*   public T remove(int index){
-        return data[index] = null;
-    }*/
+
+    public T[] remove(int index){
+        Object[] newArray = new Object[data.length];
+        System.arraycopy(data, 0, newArray, 0, index);
+        System.arraycopy(data, index + 1, newArray, index, data.length - index - 1);
+        data = (T[]) newArray;
+        System.out.println("Arrays.toString(data) = " + Arrays.toString(data));
+        return (T[]) data;
+
+    }
 
     public T[] clear() {
         for (int i = 0; i < data.length; i++) {
             data[i] = null;
         }
+        System.out.println("data = " + Arrays.toString(data));
         return data;
     }
 
