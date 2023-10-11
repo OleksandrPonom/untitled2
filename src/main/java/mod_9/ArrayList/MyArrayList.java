@@ -1,7 +1,6 @@
 package mod_9.ArrayList;
 
 import java.util.Arrays;
-import java.util.StringJoiner;
 
 public class MyArrayList <T> {
     private static final int DEFAULT_CAPACITY = 10;

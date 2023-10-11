@@ -1,7 +1,5 @@
 package mod_9.Queue;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class _MyQueue {
 	public static void main(String[] args) {
@@ -17,6 +15,8 @@ public class _MyQueue {
 
 		System.out.println("queue.peek() = " + queue.peek());
 
+		System.out.println("queue.poll() = " + queue.poll());
+		System.out.println("queue.get(0) = " + queue.get(0));
 		System.out.println("queue.poll() = " + queue.poll());
 		System.out.println("queue.get(0) = " + queue.get(0));
 		
