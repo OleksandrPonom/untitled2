@@ -14,16 +14,14 @@ public class _MyStack {
 		System.out.println("first element = " + stack.get(stack.size()-1));
 
 		System.out.println("stack.peek() = " + stack.peek());
-		System.out.println("stack.get(11) = " + stack.get(0));
-
-
-	//	System.out.println("queue.poll() = " + stack.pop());
+		System.out.println("stack.pop = " + stack.pop());
 		
-		stack.remove(1);
-		System.out.println("stack.get(1) = " + stack.get(1));
+		stack.remove(0);
+		System.out.println("stack.get(remove) = " + stack.get(0));
+		System.out.println("stack.size() new = " + stack.size());
 
-		//stack.clear();
-		//System.out.println("queue.get(0) = " + stack.get(0));
+		stack.clear();
+		System.out.println("queue.get(0) = " + stack.get(0));
 
 	}
 }
