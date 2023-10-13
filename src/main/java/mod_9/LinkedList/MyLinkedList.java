@@ -1,17 +1,7 @@
 package mod_9.LinkedList;
 
-
-
-/*
-*
-    remove(int index) видаляє елемент із вказаним індексом
-    */
-
 public class MyLinkedList<T> {
 	private Node<T> head;
-
-
-
 
 	public void add(T value) {
 		Node<T> node = new Node<>();
@@ -77,32 +67,7 @@ public class MyLinkedList<T> {
 		return null;
 	}
 
-	/*
-	 public boolean remove(Object o) {
-        if (o == null) {
-            for (Node<E> x = first; x != null; x = x.next) {
-                if (x.item == null) {
-                    unlink(x);
-                    return true;
-                }
-            }
-        } else {
-            for (Node<E> x = first; x != null; x = x.next) {
-                if (o.equals(x.item)) {
-                    unlink(x);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-	* */
-
-
-
-
- 	public T clear() {
+	 	public T clear() {
 		while (head != null) {
 			head = null;
 		}

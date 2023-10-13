@@ -1,22 +1,33 @@
 package mod_9.HashMap;
 
-public class Node<T> {
-	private T value;
-	private Node<T> next;
+public class Node<K, V> {
+	private K key;
+	private V value;
 
-	public T getValue() {
+	public K getKey() {
+		return key;
+	}
+
+	public void setKey(K key) {
+		this.key = key;
+	}
+
+	public V getValue() {
 		return value;
 	}
 
-	public void setValue(T value) {
+	public void setValue(V value) {
 		this.value = value;
 	}
 
-	public Node<T> getNext() {
+	public Node<K, V> getNext() {
 		return next;
 	}
 
-	public void setNext(Node<T> next) {
+	public void setNext(Node<K, V> next) {
 		this.next = next;
 	}
+
+	private Node<K, V> next;
+
 }
