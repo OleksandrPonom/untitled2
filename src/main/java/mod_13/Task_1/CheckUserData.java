@@ -18,24 +18,36 @@ public class CheckUserData {
 	Gson gson = new GsonBuilder().create();
 
 	public List<User> checkUserDataFromId(Integer id) throws URISyntaxException, IOException, InterruptedException {
-		HttpRequest updateUser = HttpRequest.newBuilder(new URI(DEFAULT_URL + "/" + id))
+		HttpRequest checkData = HttpRequest.newBuilder(new URI(DEFAULT_URL + "/" + id))
 				.GET()
 				.version(HttpClient.Version.HTTP_1_1)
 				.build();
 
-		HttpResponse<String> response = httpClient.send(updateUser, HttpResponse.BodyHandlers.ofString());
+		HttpResponse<String> response = httpClient.send(checkData, HttpResponse.BodyHandlers.ofString());
 		System.out.println("response.statusCode() = " + response.statusCode());
 		System.out.println("response.body() = " + response.body());
 		return null;
 	}
 
 	public List<User> checkUserDataFromUserName(String username) throws URISyntaxException, IOException, InterruptedException {
-		HttpRequest updateUser = HttpRequest.newBuilder(new URI(DEFAULT_URL + "?username=" + username))
+		HttpRequest checkData = HttpRequest.newBuilder(new URI(DEFAULT_URL + "?username=" + username))
 				.GET()
 				.version(HttpClient.Version.HTTP_1_1)
 				.build();
 
-		HttpResponse<String> response = httpClient.send(updateUser, HttpResponse.BodyHandlers.ofString());
+		HttpResponse<String> response = httpClient.send(checkData, HttpResponse.BodyHandlers.ofString());
+		System.out.println("response.statusCode() = " + response.statusCode());
+		System.out.println("response.body() = " + response.body());
+		return null;
+	}
+
+	public List<UserTask> checkUserTaskFromUserId(Integer userId) throws URISyntaxException, IOException, InterruptedException {
+		HttpRequest checkTask = HttpRequest.newBuilder(new URI(DEFAULT_URL + "/" + userId + "/todos"))
+				.GET()
+			//	.method("POST", HttpRequest.BodyPublishers.ofString("\"completed\": false"))
+				.build();
+
+		HttpResponse<String> response = httpClient.send(checkTask, HttpResponse.BodyHandlers.ofString());
 		System.out.println("response.statusCode() = " + response.statusCode());
 		System.out.println("response.body() = " + response.body());
 		return null;

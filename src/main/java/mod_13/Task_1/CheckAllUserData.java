@@ -17,7 +17,7 @@ public class CheckAllUserData {
 	private HttpClient httpClient = HttpClient.newHttpClient();
 
 	public List<User> checkAllUserData() throws URISyntaxException, IOException, InterruptedException {
-		Gson gson = new GsonBuilder().create();
+		//Gson gson = new GsonBuilder();
 		HttpRequest updateUser = HttpRequest.newBuilder(new URI(DEFAULT_URL))
 				.GET()
 				.version(HttpClient.Version.HTTP_1_1)

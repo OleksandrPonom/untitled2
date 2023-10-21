@@ -1,26 +1,29 @@
 package mod_10.Task_1;
 
 import java.io.*;
-import java.nio.charset.Charset;
+import java.util.Scanner;
 
-public class PhoneRead extends FileReader {
-    public PhoneRead(String fileName) throws FileNotFoundException {
-        super(fileName);
-    }
+public class PhoneRead extends Reader {
+	public static void main(String[] args) throws FileNotFoundException {
 
-    public PhoneRead(File file) throws FileNotFoundException {
-        super(file);
-    }
+		File file = new File("src/main/java/mod_10/Task_1/Files/file.txt");
+		FileInputStream fis = new FileInputStream(file);
+		Scanner scanner = new Scanner(fis);
+	//	Pattern pattern = new PatternSyntaxException("/n");
+		while (scanner.hasNext()){
+			String fileLine = scanner.nextLine();
 
-    public PhoneRead(FileDescriptor fd) {
-        super(fd);
-    }
+			System.out.println("fileLine = " + fileLine);
+		}
+	}
 
-    public PhoneRead(String fileName, Charset charset) throws IOException {
-        super(fileName, charset);
-    }
+	@Override
+	public int read(char[] cbuf, int off, int len) throws IOException {
+		return 0;
+	}
 
-    public PhoneRead(File file, Charset charset) throws IOException {
-        super(file, charset);
-    }
+	@Override
+	public void close() throws IOException {
+
+	}
 }
