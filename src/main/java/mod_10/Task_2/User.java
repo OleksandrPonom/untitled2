@@ -1,6 +1,6 @@
 package mod_10.Task_2;
 
-public class FileStrukture {
+public class User {
 	private String name;
 	private int age;
 
@@ -18,5 +18,18 @@ public class FileStrukture {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public User(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"name='" + name + '\'' +
+				", age=" + age +
+				'}';
 	}
 }
