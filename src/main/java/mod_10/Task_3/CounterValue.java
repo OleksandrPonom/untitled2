@@ -3,9 +3,7 @@ package mod_10.Task_3;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -31,12 +29,12 @@ public class CounterValue {
 			value.add(r.replaceAll("[^a-z]", ""));
 		}
 
-		Map<String, Long> counter = countDuplicateValue(value);
+		Map<String, Integer> counter = countDuplicateValue(value);
 		System.out.println(counter);
 	}
 
-	public static Map<String, Long> countDuplicateValue(List<String> inputList){
-		return inputList.stream().collect(Collectors.toMap(Function.identity(), v -> 1L, Long::sum));
+	public static Map<String, Integer> countDuplicateValue(List<String> inputList){
+		return inputList.stream().sorted().collect(Collectors.toMap(Function.identity(), v -> 1, Integer::sum));
 	}
 
 }
