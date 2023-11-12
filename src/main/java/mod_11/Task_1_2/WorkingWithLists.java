@@ -1,9 +1,9 @@
 package mod_11.Task_1_2;
 
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import static java.util.Locale.filter;
 import static java.util.stream.Collectors.*;
 
 public class WorkingWithLists {
@@ -11,18 +11,27 @@ public class WorkingWithLists {
 
 	public static void main(String[] args) {
 
-		List<String> unpairedIndex = names;
-	//			.iterator();
-	//			.filter(names.size() = 1)
-	//			.collect(toList());
+		/*List<String> unpairedIndex = names.stream()
+				.flatMap(x -> {
+				})
+				.filter()
 
-		System.out.println("unpairedIndex = " + unpairedIndex);
+				.collect(toList());*/
 
-		List<String> reversSort = names.stream()
+		/*IntStream.range(0, names.size() - 1)
+				.filter(i -> i % 2 == 1)
+				.flatMap(i -> names(i))
+				.collect(toList());*/
+
+	//	System.out.println("unpairedIndex = " + unpairedIndex);
+		System.out.println();
+
+
+
+		List<String> reversAndSort = names.stream()
 			 	.sorted(Comparator.reverseOrder())
 				.map(String::toUpperCase)
 				.collect(toList());
-
-		System.out.println("reversSort = " + reversSort);
+		System.out.println("reversAndSort = " + reversAndSort);
 	}
 }
