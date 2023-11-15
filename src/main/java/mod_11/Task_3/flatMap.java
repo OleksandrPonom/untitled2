@@ -16,7 +16,8 @@ public class flatMap {
 
 	public static void main(String[] args) {
 		Stream<String> sortElementArrays = arrayList.stream()
-				.flatMap(String::lines);
+				.flatMap(String::lines)
+				.sorted();
 	//			.map(i -> i + 1)
 		//		.sorted(Comparator.comparingInt(value -> s));
 				//.collect(Collectors.toList());

@@ -4,8 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+
 
 public class CounterValue {
 	private static final String FILE_INPUT_PATH = "src/main/java/mod_10/Task_3/Files/words.txt";
@@ -29,12 +28,35 @@ public class CounterValue {
 			value.add(r.replaceAll("[^a-z]", ""));
 		}
 
-		Map<String, Integer> counter = countDuplicateValue(value);
-		System.out.println(counter);
+		Map<String, Integer> valueCount = new HashMap<>();
+		value.forEach(n -> {
+			if(valueCount.containsKey(n)) {
+				valueCount.put(n, valueCount.get(n) + 1);
+			} else {
+				valueCount.put(n, 1);
+			}
+		});
+
+		Map<String, Integer> sorted = sortByValue(valueCount);
+		System.out.println("sorted = " + sorted);
 	}
 
-	public static Map<String, Integer> countDuplicateValue(List<String> inputList){
-		return inputList.stream().sorted().collect(Collectors.toMap(Function.identity(), v -> 1, Integer::sum));
-	}
 
+	public static <K,V extends Comparable<V>> Map<K, V> sortByValue(Map<K, V> map) {
+		List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
+		Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
+
+			@Override
+			public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
+				return o2.getValue().compareTo(o1.getValue());
+			}
+		});
+
+		Map<K, V> result = new LinkedHashMap<>();
+		for (Iterator<Map.Entry<K, V>> it = list.iterator(); it.hasNext();) {
+			Map.Entry<K, V> entry =  it.next();
+			result.put(entry.getKey(), entry.getValue());
+		}
+		return result;
+	}
 }
