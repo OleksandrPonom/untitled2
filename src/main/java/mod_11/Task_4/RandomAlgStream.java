@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 public class RandomAlgStream {
 	public static void main(String[] args) {
 		RandomAlg ra = new RandomAlg();
-		Stream <Integer> iterate = Stream.iterate(0, (seed) -> ra.withSeed(seed).next());
+		Stream <Long> iterate = Stream.iterate(0l, (seed) -> ra.withSeed(seed).next());
 
-		List<Integer> collect = iterate
+		List<Long> collect = iterate
 				.peek(System.out::println)
 				.limit(20)
 				.collect(Collectors.toList());
