@@ -19,13 +19,11 @@ public class flatMap {
 
 
 	public static void main(String[] args) {
-		String sortElementArrays = arrayList.stream()
-				.map(String::valueOf)
-				.sorted(Comparator.reverseOrder())
-		//		.flatMap()
-		//		.sorted()
-
-			.collect(joining(", "));
+		String sortElementArrays = arrayList
+				.stream()
+				.flatMap(str-> Arrays.stream(str.split(", ")))
+				.sorted()
+				.collect(joining(", "));
 
 
 		System.out.println("sortElementArrays = " + sortElementArrays); //0, 1, 2, 4, 5

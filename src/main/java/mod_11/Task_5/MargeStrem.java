@@ -9,10 +9,17 @@ package mod_11.Task_5;
 
 */
 
-public class ShaikingStrem {
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
+public class MargeStrem<T> {
+	public Stream<T> first;
+	public Stream<T> second;
 
-//	public static <T> Stream<T> zip(Stream<T> first, Stream<T> second){
-//	}
-
+	public static <T> Stream<T> zip(Stream<T> first, Stream<T> second){
+	//	List<T> margeStream = first.flatMap(Collections::toString);
+		return null;
+	}
 }
+
