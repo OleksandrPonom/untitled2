@@ -8,9 +8,14 @@ public class RandomAlg {
 	public RandomAlg(){
 		this.a = 25214903917l;
 		this.m = 2 ^ 48;
-		this.c = 11;
 	}
-	public RandomAlg withSeed (){
-		return null;
+	public RandomAlg withSeed (int c){
+		this.c = 11;
+		x = new AtomicLong(c);
+		return this;
+	}
+
+	public  int next(){
+		return (int) ((a * x.getAndIncrement() + c) % m);
 	}
 }
