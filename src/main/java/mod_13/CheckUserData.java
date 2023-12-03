@@ -1,7 +1,4 @@
-package mod_13.Task_1;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+package mod_13;
 
 import java.io.IOException;
 import java.net.URI;
@@ -11,16 +8,13 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-import static mod_13.Task_1.WorkConstans.DEFAULT_URL;
-
 public class CheckUserData {
 	private HttpClient httpClient = HttpClient.newHttpClient();
-	Gson gson = new GsonBuilder().create();
 
 	public List<User> checkUserDataFromId(Integer id) throws URISyntaxException, IOException, InterruptedException {
-		HttpRequest checkData = HttpRequest.newBuilder(new URI(DEFAULT_URL + "/" + id))
+		HttpRequest checkData = HttpRequest.newBuilder(new URI(WorkConstans.DEFAULT_URL + "/" + id))
 				.GET()
-				.version(HttpClient.Version.HTTP_1_1)
+				.version(HttpClient.Version.HTTP_2)
 				.build();
 
 		HttpResponse<String> response = httpClient.send(checkData, HttpResponse.BodyHandlers.ofString());
@@ -30,9 +24,9 @@ public class CheckUserData {
 	}
 
 	public List<User> checkUserDataFromUserName(String username) throws URISyntaxException, IOException, InterruptedException {
-		HttpRequest checkData = HttpRequest.newBuilder(new URI(DEFAULT_URL + "?username=" + username))
+		HttpRequest checkData = HttpRequest.newBuilder(new URI(WorkConstans.DEFAULT_URL + "?username=" + username))
 				.GET()
-				.version(HttpClient.Version.HTTP_1_1)
+				.version(HttpClient.Version.HTTP_2)
 				.build();
 
 		HttpResponse<String> response = httpClient.send(checkData, HttpResponse.BodyHandlers.ofString());
@@ -42,12 +36,26 @@ public class CheckUserData {
 	}
 
 	public List<UserTask> checkUserTaskFromUserId(Integer userId) throws URISyntaxException, IOException, InterruptedException {
-		HttpRequest checkTask = HttpRequest.newBuilder(new URI(DEFAULT_URL + "/" + userId + "/todos"))
-				.GET()
-			//	.method("POST", HttpRequest.BodyPublishers.ofString("\"completed\": false"))
+		HttpRequest checkTask = HttpRequest.newBuilder(new URI(WorkConstans.DEFAULT_URL + "/" + userId + "/todos"))
+				.method("GET", HttpRequest.BodyPublishers.ofString("false"))
+				.version(HttpClient.Version.HTTP_2)
+				.header("Content-type","application/json")
 				.build();
 
 		HttpResponse<String> response = httpClient.send(checkTask, HttpResponse.BodyHandlers.ofString());
+		System.out.println("response.statusCode() = " + response.statusCode());
+		System.out.println("response.body() = " + response.body());
+		return null;
+	}
+
+	public List<UserTask> checkUserPostFromUserId(Integer userId) throws URISyntaxException, IOException, InterruptedException {
+		HttpRequest checkPost = HttpRequest.newBuilder(new URI(WorkConstans.DEFAULT_URL + "/" + userId + "/posts"))
+				.method("GET", HttpRequest.BodyPublishers.noBody())
+				.version(HttpClient.Version.HTTP_2)
+				.header("Content-type","application/json")
+				.build();
+
+		HttpResponse<String> response = httpClient.send(checkPost, HttpResponse.BodyHandlers.ofString());
 		System.out.println("response.statusCode() = " + response.statusCode());
 		System.out.println("response.body() = " + response.body());
 		return null;

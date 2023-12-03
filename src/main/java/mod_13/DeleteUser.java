@@ -1,7 +1,4 @@
-package mod_13.Task_1;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+package mod_13;
 
 import java.io.IOException;
 import java.net.URI;
@@ -11,8 +8,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-import static mod_13.Task_1.WorkConstans.DEFAULT_URL;
-
 public class DeleteUser {
 
 
@@ -20,12 +15,12 @@ public class DeleteUser {
 
 	public List<User> deleteUser(Integer id) throws URISyntaxException, IOException, InterruptedException {
 
-		HttpRequest deleteUserFromIndex = HttpRequest.newBuilder(new URI(DEFAULT_URL + "/" + id))
+		HttpRequest deleteUserFromIndex = HttpRequest.newBuilder(new URI(WorkConstans.DEFAULT_URL + "/" + id))
 				.DELETE()
 				.build();
 
 		HttpResponse<String> send = httpClient.send(deleteUserFromIndex, HttpResponse.BodyHandlers.ofString());
-		System.out.println("send.statusCode() = " + send.statusCode());
+		System.out.println("statusCode from delete User = " + send.statusCode());
 		return null;
 	}
 

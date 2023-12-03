@@ -1,7 +1,4 @@
-package mod_13.Task_1;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+package mod_13;
 
 import java.io.IOException;
 import java.net.URI;
@@ -11,19 +8,17 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-import static mod_13.Task_1.WorkConstans.DEFAULT_URL;
-
 public class CheckAllUserData {
 	private HttpClient httpClient = HttpClient.newHttpClient();
 
 	public List<User> checkAllUserData() throws URISyntaxException, IOException, InterruptedException {
-		//Gson gson = new GsonBuilder();
-		HttpRequest updateUser = HttpRequest.newBuilder(new URI(DEFAULT_URL))
+
+		HttpRequest checkUserData = HttpRequest.newBuilder(new URI(WorkConstans.DEFAULT_URL))
 				.GET()
-				.version(HttpClient.Version.HTTP_1_1)
+				.version(HttpClient.Version.HTTP_2)
 				.build();
 
-		HttpResponse<String> response = httpClient.send(updateUser, HttpResponse.BodyHandlers.ofString());
+		HttpResponse<String> response = httpClient.send(checkUserData, HttpResponse.BodyHandlers.ofString());
 		System.out.println("response.statusCode() = " + response.statusCode());
 		System.out.println("response.body() = " + response.body());
 		return null;
