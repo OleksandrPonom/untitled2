@@ -69,8 +69,8 @@ public class Demo {
 	//	System.out.println("checkUserFromUsername = " + checkUserFromUsername);
 
 		//Task 2
-		//	final List<User> checkUserFromUsername = ParsURL.sendGetByUserName("Samantha");
-		//	System.out.println("checkUserFromUsername = " + checkUserFromUsername);
+	 	final List<PostComments> checkUserCommentsToLustPost = ParsURL.sendGetCommentToLustPost(2);
+	//	System.out.println("checkUserCommentsToLustPost = " + checkUserCommentsToLustPost);
 
 		//Task 3
 	//	final List<UserTask> checkTasksUsers = ParsURL.sendGetByPost(1, false);
